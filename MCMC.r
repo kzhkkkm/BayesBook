@@ -1,6 +1,3 @@
-##
-## Last Change: 10 06 14:38 PM 2021.
-##
 #install.packages( "coda", dep = T )
 library( coda )
 
@@ -23,11 +20,11 @@ fHarmonicMean <- function( vX )
 	dMu <- 1.0 / mean( vZ )
 	dS  <- dMu ^ 2 * sd( vZ ) / sqrt( cN )
 
-	mY <- cbind( rbind( dMu, dS ), rbind( log( dMu ), dS / dMu ) )
-	rownames( mY ) <- c( "mean", "standard error" )
-	colnames( mY ) <- c( "standard", "log" )
+	vY <- rbind( log( dMu ), dS / dMu )
+	rownames( vY ) <- c( "mean", "standard error" )
+	colnames( vY ) <- "log"
 
-	return( mY )
+	return( vY )
 }
 
 fSummary <- function( mX, sName = NULL, sFileName = "Output", vProb = c( 0.025, 0.975 ), vLik = NULL )
