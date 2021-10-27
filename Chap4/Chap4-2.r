@@ -231,7 +231,11 @@ plot( mG.05, lty = 1, xlim = c( x.min, x.max ), ylim = c( 0, y.max ), main = "",
 par( new = T )
 plot( mG.10, lty = 2, xlim = c( x.min, x.max ), ylim = c( 0, y.max ), main = "", xlab = "", ylab = "", xaxt = "n", yaxt = "n", bty = "n" )
 legend( "topright", legend = c( "2005年", "2010年" ), lty = c( 1, 2 ), bty = "n" )
-plot( vG, lty = 1, main = "", xlab = "", ylab = "", bty = "n" )
+plot.new(  )
+plot.window( xlim = c( -0.01, 0.02 ), ylim = c( 0, 100 ) )
+polygon( c( 0, vG$x[vG$x >= 0] ), c( 0, vG$y[vG$x >= 0] ), col = grey( 0.8 ), lty = 0 )
+par( new = T )
+plot( vG, lty = 1, xlim = c( -0.01, 0.02 ), ylim = c( 0, 100 ), main = "", xlab = "", ylab = "", bty = "n" )
 dev.off(  )
 
 print( sum( vPostGini.10 - vPostGini.05 > 0.0 ) / iDraw )
