@@ -233,3 +233,5 @@ plot( mG.10, lty = 2, xlim = c( x.min, x.max ), ylim = c( 0, y.max ), main = "",
 legend( "topright", legend = c( "2005年", "2010年" ), lty = c( 1, 2 ), bty = "n" )
 plot( vG, lty = 1, main = "", xlab = "", ylab = "", bty = "n" )
 dev.off(  )
+
+print( sum( vPostGini.10 - vPostGini.05 > 0.0 ) / iDraw )
