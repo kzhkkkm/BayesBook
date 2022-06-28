@@ -44,5 +44,8 @@
 ## 第6章
 + 第6.1節 景気循環のベイズ分析: [Chap6-1.r](Chap6/Chap6-1.r)
 
+## 付録A
++ 付録A.2.7 最尤法:  [Chap-app-a.r](ChapAppendix/Chap-app-a.r)
+
 ## 付録C
-+ 付録C.2 MHアルゴリズムの比較: [Chap-app-3.r](ChapAppendix/Chap-app-3.r)
++ 付録C.2 MHアルゴリズムの比較: [Chap-app-c.r](ChapAppendix/Chap-app-c.r)
