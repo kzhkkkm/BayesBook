@@ -72,7 +72,7 @@ for ( iter in 1 : iIter )
 	}
 
 	## sampling dSigma2
-	dLamb.1 <- sum( ( vY /  vW ) ^ 2 ) + dLamb.0
+	dLamb.1 <- sum( vY ^ 2 / vW ) + dLamb.0
 
 	dSigma2 <- 1.0 / rgamma( 1, 0.5 * dNu.1, 0.5 * dLamb.1 )
 
