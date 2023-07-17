@@ -68,7 +68,7 @@ nstep <- as.integer( 0.1 * iIter )
 res <- optim( vTheta, fLogL, method = "L-BFGS-B", lower = c( -Inf, 0.0 ), hessian = TRUE, control = list( fnscale=-1 ), vX = vX, vN = vN )
 mSigma <- t( chol( solve( -res$hessian ) ) )
 vTheta <- res$par
-
+dLogL.o <- fLogN( vTheta[1], dMu.0, dTau2.0 ) + fLogIG( vTheta[2], 0.5 * dNu.0, 0.5 * dLamb.0 ) + fLogL( vTheta, vX, vN )
 dC      <- 0.5
 dCount  <- 0
 dAccept <- 0
@@ -92,10 +92,12 @@ for ( iter in 1 : iIter )
 	vTheta.n <- vTheta + dC * mSigma %*% rnorm( 2 )
 	if ( vTheta.n[2] > 0.0 )
 	{
-		if ( runif( 1 ) < exp( fLogN( vTheta.n[1], dMu.0, dTau2.0 ) + fLogIG( vTheta.n[2], 0.5 * dNu.0, 0.5 * dLamb.0 ) + fLogL( vTheta.n, vX, vN ) - fLogN( vTheta[1], dMu.0, dTau2.0 ) - fLogIG( vTheta[2], 0.5 * dNu.0, 0.5 * dLamb.0 ) - fLogL( vTheta, vX, vN ) ) )
+		dLogL.n <- fLogN( vTheta.n[1], dMu.0, dTau2.0 ) + fLogIG( vTheta.n[2], 0.5 * dNu.0, 0.5 * dLamb.0 ) + fLogL( vTheta.n, vX, vN )
+		if ( runif( 1 ) < exp( dLogL.n - dLogL.o ) )
 		{
 			vTheta  <- vTheta.n
 			dAccept <- dAccept + 1
+			dLogL.o <- dLogL.n
 		}
 	}
 	if ( iter <= iBurn )
@@ -146,8 +148,9 @@ vTheta <- c( 8.4, 0.4 )
 
 ## set some matrices, vectors and scalars
 res <- optim( vTheta, fLogL, method = "L-BFGS-B", lower = c( -Inf, 0.0 ), hessian = TRUE, control = list( fnscale=-1 ), vX = vX, vN = vN )
-mSigma <- t( chol( solve( -res$hessian ) ) )
-vTheta <- res$par
+mSigma  <- t( chol( solve( -res$hessian ) ) )
+vTheta  <- res$par
+dLogL.o <- fLogN( vTheta[1], dMu.0, dTau2.0 ) + fLogIG( vTheta[2], 0.5 * dNu.0, 0.5 * dLamb.0 ) + fLogL( vTheta, vX, vN )
 
 dC      <- 0.5
 dCount  <- 0
@@ -172,10 +175,12 @@ for ( iter in 1 : iIter )
 	vTheta.n <- vTheta + dC * mSigma %*% rnorm( 2 )
 	if ( vTheta.n[2] > 0.0 )
 	{
-		if ( runif( 1 ) < exp( fLogN( vTheta.n[1], dMu.0, dTau2.0 ) + fLogIG( vTheta.n[2], 0.5 * dNu.0, 0.5 * dLamb.0 ) + fLogL( vTheta.n, vX, vN ) - fLogN( vTheta[1], dMu.0, dTau2.0 ) - fLogIG( vTheta[2], 0.5 * dNu.0, 0.5 * dLamb.0 ) - fLogL( vTheta, vX, vN ) ) )
+		dLogL.n <- fLogN( vTheta.n[1], dMu.0, dTau2.0 ) + fLogIG( vTheta.n[2], 0.5 * dNu.0, 0.5 * dLamb.0 ) + fLogL( vTheta.n, vX, vN )
+		if ( runif( 1 ) < exp( dLogL.n - dLogL.o ) )
 		{
 			vTheta  <- vTheta.n
 			dAccept <- dAccept + 1
+			dLogL.o <- dLogL.n
 		}
 	}
 	if ( iter <= iBurn )
