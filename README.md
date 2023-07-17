@@ -58,7 +58,7 @@
 # 修正
 + 図5.1の凡例を修正(22/11/16)
 + [chap3-3-3.r](Chap3/Chap3-3-3.r)75行目のバグを修正(22/11/17)
-+ [chap3-3-1.r](Chap3/Chap3-3-1.r)，[chap3-3-3.r](Chap3/Chap3-3-3.r)，[chap4-2.r](Chap4/Chap4-2.r)，[Chap-app-c.r](ChapAppendix/Chap-app-c.r)を修正(23/07/17)
++ [chap3-3-1.r](Chap3/Chap3-3-1.r)，[chap3-3-3.r](Chap3/Chap3-3-3.r)，[chap4-2.r](Chap4/Chap4-2.r)，[Chap-app-c.r](ChapAppendix/Chap-app-c.r)を高速化のため修正(23/07/17)
 ---
 # 正誤表
 + [正誤表](https://kzhkkkm.github.io/bayes.html)
