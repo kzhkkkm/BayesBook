@@ -114,6 +114,7 @@ iIter <- iBurn + iDraw
 nstep <- as.integer( 0.1 * iIter )
 
 ## set some matrices, vectors and scalars
+dLogL.o <- fLogIG( dSigma2, 0.5 * dNu.0, 0.5 * dLamb.0 ) + fLogL( vY, dNu, dSigma2 )
 dCount  <- 0
 dAccept <- 0
 dC      <- 0.1
@@ -136,12 +137,12 @@ for ( iter in 1 : iIter )
 	dSigma2.n <- dSigma2 + dC * rnorm( 1 )
 	if ( dSigma2.n > 0.0 )
 	{
-		dLogL.o <- fLogIG( dSigma2, 0.5 * dNu.0, 0.5 * dLamb.0 ) + fLogL( vY, dNu, dSigma2 )
 		dLogL.n <- fLogIG( dSigma2.n, 0.5 * dNu.0, 0.5 * dLamb.0 ) + fLogL( vY, dNu, dSigma2.n )
 		if ( runif( 1 ) <= exp( dLogL.n - dLogL.o ) )
 		{
 			dSigma2 <- dSigma2.n
 			dAccept <- dAccept + 1
+			dLogL.o <- dLogL.n
 		}
 	}
 	if ( iter <= iBurn )
