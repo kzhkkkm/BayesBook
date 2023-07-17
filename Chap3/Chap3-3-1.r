@@ -68,6 +68,7 @@ iIter <- iBurn + iDraw
 nstep <- as.integer( 0.1 * iIter )
 
 ## set some matrices, vectors and scalars
+dLogL.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
 dC      <- 1.0
 dCount  <- 0
 dAccept <- 0
@@ -91,12 +92,12 @@ for ( iter in 1 : iIter )
 	dPhi.n <- dPhi + dC * rnorm( 1 )
 	if ( abs( dPhi.n ) < 1.0 )
 	{
-		dLogL.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
 		dLogL.n <- fLogB( dPhi.n, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi.n )
 		if ( runif( 1 ) <= exp( dLogL.n - dLogL.o ) )
 		{
 			dPhi    <- dPhi.n
 			dAccept <- dAccept + 1
+			dLogL.o <- dLogL.n
 		}
 	}
 	if ( iter <= iBurn )
@@ -163,6 +164,7 @@ iIter <- iBurn + iDraw
 nstep <- as.integer( 0.1 * iIter )
 
 ## set some matrices, vectors and scalars
+dLogL.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
 dC      <- 0.005
 dCount  <- 0
 dAccept <- 0
@@ -185,12 +187,12 @@ for ( iter in 1 : iIter )
 	dPhi.n <- dPhi + dC * rnorm( 1 )
 	if ( abs( dPhi.n ) < 1.0 )
 	{
-		dLogL.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
 		dLogL.n <- fLogB( dPhi.n, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi.n )
 		if ( runif( 1 ) <= exp( dLogL.n - dLogL.o ) )
 		{
 			dPhi    <- dPhi.n
 			dAccept <- dAccept + 1
+			dLogL.o <- dLogL.n
 		}
 	}
 
@@ -218,6 +220,7 @@ iIter <- iBurn + iDraw
 nstep <- as.integer( 0.1 * iIter )
 
 ## set some matrices, vectors and scalars
+dLogL.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
 dC      <- 0.05
 dCount  <- 0
 dAccept <- 0
@@ -240,12 +243,12 @@ for ( iter in 1 : iIter )
   dPhi.n <- dPhi + dC * rnorm( 1 )
   if ( abs( dPhi.n ) < 1.0 )
   {
-    dLogL.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
     dLogL.n <- fLogB( dPhi.n, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi.n )
     if ( runif( 1 ) <= exp( dLogL.n - dLogL.o ) )
     {
       dPhi    <- dPhi.n
       dAccept <- dAccept + 1
+			dLogL.o <- dLogL.n
     }
   }
   
@@ -273,6 +276,7 @@ iIter <- iBurn + iDraw
 nstep <- as.integer( 0.1 * iIter )
 
 ## set some matrices, vectors and scalars
+dLogL.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
 dC      <- 1.0
 dCount  <- 0
 dAccept <- 0
@@ -295,12 +299,12 @@ for ( iter in 1 : iIter )
 	dPhi.n <- dPhi + dC * rnorm( 1 )
 	if ( abs( dPhi.n ) < 1.0 )
 	{
-		dLogL.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
 		dLogL.n <- fLogB( dPhi.n, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi.n )
 		if ( runif( 1 ) <= exp( dLogL.n - dLogL.o ) )
 		{
 			dPhi    <- dPhi.n
 			dAccept <- dAccept + 1
+			dLogL.o <- dLogL.n
 		}
 	}
 
