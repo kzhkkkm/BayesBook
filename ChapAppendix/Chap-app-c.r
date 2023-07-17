@@ -80,6 +80,8 @@ vAccept    <- rep( 0.0, 5 )
 dPhi <- 0.0
 
 ## set some matrices, vectors and scalars
+dLogPi.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
+
 dC      <- 1.0
 dCount  <- 0
 dAccept <- 0
@@ -102,12 +104,12 @@ for ( iter in 1 : iIter )
 	dPhi.n <- dPhi + dC * rnorm( 1 )
 	if ( abs( dPhi.n ) < 1.0 )
 	{
-		dLogPi.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
 		dLogPi.n <- fLogB( dPhi.n, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi.n )
 		if ( runif( 1 ) <= exp( dLogPi.n - dLogPi.o ) )
 		{
-			dPhi    <- dPhi.n
-			dAccept <- dAccept + 1
+			dPhi     <- dPhi.n
+			dAccept  <- dAccept + 1
+			dLogPi.o <- dLogPi.n
 		}
 	}
 	if ( iter <= iBurn )
@@ -143,6 +145,9 @@ vAccept[1] <- dAccept / dCount
 dPhi <- 0.0
 
 ## set some matrices, vectors and scalars
+dLogPi.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
+dQ.o     <- -0.5 * ( dPhi - dPhi.h ) ^ 2 / dS2
+
 dCount  <- 0
 dAccept <- 0
 
@@ -163,14 +168,15 @@ for ( iter in 1 : iIter )
 	## sampling dPhi
 	dPhi.n <- rtnorm( dPhi.h, dS2, -1.0, 1.0 )
 	
-	dLogPi.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
 	dLogPi.n <- fLogB( dPhi.n, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi.n )
-	dQ.o     <- -0.5 * ( dPhi - dPhi.h ) ^ 2 / dS2
 	dQ.n     <- -0.5 * ( dPhi.n - dPhi.h ) ^ 2 / dS2
 	if ( runif( 1 ) <= exp( dLogPi.n + dQ.o - dLogPi.o - dQ.n ) )
 	{
-		dPhi    <- dPhi.n
-		dAccept <- dAccept + 1
+		dPhi     <- dPhi.n
+		dAccept  <- dAccept + 1
+		dLogPi.o <- dLogPi.n
+		dQ.o     <- dQ.n
+
 	}
 	if ( iter - iBurn == 0 )
 	{
@@ -194,10 +200,13 @@ vAccept[2] <- dAccept / dCount
 dPhi <- 0.0
 
 ## set some matrices, vectors and scalars
+dLogKappa <- - 0.5 * ( dS2 * sum( vY ^ 2 ) - dPhi.h ^ 2 ) / dS2
+dLogPi.o  <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )	
+dQ.o      <- dLogKappa - 0.5 * sqrt( dS2 ) - 0.5 * ( dPhi - dPhi.h ) ^ 2 / dS2
+
 dCount.AR <- 0
 dCount    <- 0
 dAccept   <- 0
-dLogKappa <- - 0.5 * ( dS2 * sum( vY ^ 2 ) - dPhi.h ^ 2 ) / dS2
 
 ## set timer
 ttt <- proc.time(  )
@@ -223,12 +232,12 @@ for ( iter in 1 : iIter )
 		dCount.AR <- dCount.AR + 1
 	}
 	dCount   <- dCount + 1
-	dLogPi.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )	
-	dQ.o     <- dLogKappa - 0.5 * sqrt( dS2 ) - 0.5 * ( dPhi - dPhi.h ) ^ 2 / dS2
 	if ( runif( 1 ) <= exp( dLogPi.n + min( dLogPi.o, dQ.o ) - dLogPi.o - min( dLogPi.n, dQ.n ) ) )
 	{
-		dPhi    <- dPhi.n
-		dAccept <- dAccept + 1
+		dPhi     <- dPhi.n
+		dAccept  <- dAccept + 1
+		dLogPi.o <- dLogPi.n	
+		dQ.o     <-	dQ.n
 	}
 	if ( iter - iBurn == 0 )
 	{
@@ -254,6 +263,9 @@ vAccept[4] <- dAccept / dCount
 dPhi <- 0.0
 
 ## set some matrices, vectors and scalars
+dLogPi.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
+dQ.o     <- -0.5 * ( dPhi - dPhi.n - 0.5 * dC ^ 2 * fLogPi.d( dPhi.n, vY, dAlpha.0, dBeta.0 ) ) ^ 2 / dC ^ 2
+
 dC      <- 0.1
 dCount  <- 0
 dAccept <- 0
@@ -277,14 +289,14 @@ for ( iter in 1 : iIter )
 
 	if ( abs( dPhi.n ) < 1.0  )
 	{
-		dLogPi.o <- fLogB( dPhi, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi )
 		dLogPi.n <- fLogB( dPhi.n, dAlpha.0, dBeta.0 ) + fLogL( vY, dPhi.n )
-		dQ.o     <- -0.5 * ( dPhi - dPhi.n - 0.5 * dC ^ 2 * fLogPi.d( dPhi.n, vY, dAlpha.0, dBeta.0 ) ) ^ 2 / dC ^ 2
 		dQ.n     <- -0.5 * ( dPhi.n - dPhi - 0.5 * dC ^ 2 * fLogPi.d( dPhi, vY, dAlpha.0, dBeta.0 ) ) ^ 2 / dC ^ 2
 		if ( runif( 1 ) <= exp( dLogPi.n + dQ.o - dLogPi.o - dQ.n ) )
 		{
-			dPhi    <- dPhi.n
-			dAccept <- dAccept + 1
+			dPhi     <- dPhi.n
+			dAccept  <- dAccept + 1
+			dLogPi.o <- dLogPi.n
+			dQ.o     <- dQ.n
 		}
 	}
 	if ( iter <= iBurn )
