@@ -16,7 +16,7 @@ fHarmonicMean <- function( vX )
 {
 	cN <- length( vX )
 	vZ <- 1.0 / vX
-	
+
 	dMu <- 1.0 / mean( vZ )
 	dS  <- dMu ^ 2 * sd( vZ ) / sqrt( cN )
 
@@ -29,7 +29,7 @@ fHarmonicMean <- function( vX )
 
 fSummary <- function( mX, sName = NULL, sFileName = "Output", vProb = c( 0.025, 0.975 ), vLik = NULL )
 {
-	cK <- NCOL( mX )	
+	cK <- NCOL( mX )
 
 	mSummary <- NULL
 	for ( i in 1 : cK )
@@ -89,7 +89,6 @@ fDraw <- function( mX, sName = NULL, sFileName = "Fig" )
 			sName <- c( sName, paste( "param", i, sep = "" ) )
 		}
 	}
-	
 	for ( i in 1 : cK )
 	{
 		if ( i %% 3 == 1 )
