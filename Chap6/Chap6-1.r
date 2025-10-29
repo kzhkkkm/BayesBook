@@ -29,7 +29,7 @@ mXX  <- t.mX %*% mX
 vZ    <- vY
 vBeta <- solve( mXX ) %*% t( mX ) %*% vZ
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 50000
 iDraw <- 50000
 iIter <- iBurn + iDraw

@@ -61,7 +61,7 @@ dBeta.0  <- 1.0
 ## set initial parameters
 dPhi    <- 0.0
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 10000
 iDraw <- 10000
 iIter <- iBurn + iDraw
@@ -157,7 +157,7 @@ print( paste( "Execution time: ", sprintf( "%7.3f", ( proc.time(  ) - ttt )[3] )
 ## set initial parameters
 dPhi <- 0.8
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 0
 iDraw <- 10000
 iIter <- iBurn + iDraw
@@ -213,7 +213,7 @@ print( paste( "Execution time: ", sprintf( "%7.3f", ( proc.time(  ) - ttt )[3] )
 ## set initial parameters
 dPhi <- 0.8
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 0
 iDraw <- 10000
 iIter <- iBurn + iDraw
@@ -238,7 +238,7 @@ for ( iter in 1 : iIter )
     print( paste( "iter = ", sprintf( "%7d", iter - iBurn ), ", dPhi = ", sprintf( "%7.3f", dPhi ),  sep = "" ) )
   }
   dCount <- dCount + 1
-  
+
   ## sampling dPhi
   dPhi.n <- dPhi + dC * rnorm( 1 )
   if ( abs( dPhi.n ) < 1.0 )
@@ -251,12 +251,12 @@ for ( iter in 1 : iIter )
 			dLogL.o <- dLogL.n
     }
   }
-  
+
   ## save parameters
   if ( iter > iBurn )
   {
     it <- iter - iBurn
-    
+
     vPostParam[it] <- dPhi
   }
 }
@@ -269,7 +269,7 @@ print( paste( "Execution time: ", sprintf( "%7.3f", ( proc.time(  ) - ttt )[3] )
 ## set initial parameters
 dPhi    <- 0.8
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 0
 iDraw <- 10000
 iIter <- iBurn + iDraw

@@ -29,7 +29,7 @@ dLamb.0  <- 0.01
 vBeta   <- rep( 0.0, cK )
 dSigma2 <- 1.0
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 10000
 iDraw <- 10000
 iIter <- iBurn + iDraw
@@ -123,7 +123,7 @@ dLamb.0  <- 0.01
 vBeta   <- rep( 0.0, cK )
 dSigma2 <- 1.0
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 10000
 iDraw <- 10000
 iIter <- iBurn + iDraw

@@ -28,11 +28,11 @@
 + ヒストリカル・ボラティリティのべイズ分析: [Chap2-2.r](Chap2/Chap2-2.r)
 
 ## 第3章
-+ 第3.1節 モンテカルロ法: [chap3-1.r](Chap3/Chap3-1.r)
++ 第3.1節 モンテカルロ法: [Chap3-1.r](Chap3/Chap3-1.r)
 + 第3.3節 マルコフ連鎖モンテカルロ法: [Chap3-3.r](Chap3/Chap3-3.r)
 + 第3.3.1節 メトロポリス・ヘイスティングス・アルゴリズム: [Chap3-3-1.r](Chap3/Chap3-3-1.r)
 + 第3.3.2節 ギブズ・サンプラー: [Chap3-3-2.r](Chap3/Chap3-3-2.r)
-+ 第3.3.3節 データ拡大法: [chap3-3-3.r](Chap3/Chap3-3-3.r)
++ 第3.3.3節 データ拡大法: [Chap3-3-3.r](Chap3/Chap3-3-3.r)
 
 ## 第4章
 + 第4.1節 炭鉱爆発事故のベイズ分析: [Chap4-1.r](Chap4/Chap4-1.r)
@@ -57,8 +57,9 @@
 
 # 修正
 + 図5.1の凡例を修正(22/11/16)
-+ [chap3-3-3.r](Chap3/Chap3-3-3.r)75行目のバグを修正(22/11/17)
-+ [chap3-3-1.r](Chap3/Chap3-3-1.r)，[chap3-3-3.r](Chap3/Chap3-3-3.r)，[chap4-2.r](Chap4/Chap4-2.r)，[Chap-app-c.r](ChapAppendix/Chap-app-c.r)を高速化のため修正(23/07/17)
++ [Chap3-3-3.r](Chap3/Chap3-3-3.r)75行目のバグを修正(22/11/17)
++ [Chap3-3-1.r](Chap3/Chap3-3-1.r)，[Chap3-3-3.r](Chap3/Chap3-3-3.r)，[Chap4-2.r](Chap4/Chap4-2.r)，[Chap-app-c.r](ChapAppendix/Chap-app-c.r)を高速化のため修正(23/07/17)
++ [Chap3-3-1.r](Chap3/Chap3-3-1.r)，[Chap3-3-2.r](Chap3/Chap3-3-2.r)，[Chap3-3-3.r](Chap3/Chap3-3-3.r)，[Chap4-2.r](Chap4/Chap4-2.r)，[Chap4-3.r](Chap4/Chap4-3.r)，[Chap5-1.r](Chap5/Chap5-1.r)，[Chap5-2.r](Chap5/Chap5-2.r)，[Chap5-3.r](Chap5/Chap5-3.r)，[Chap4-2.r](Chap6/Chap6-1.r)，[Chap-app-c.r](ChapAppendix/Chap-app-c.r)[chap4-2.r](Chap4/Chap4-2.r)，のコメント文のタイポを修正(25/10/29)
 ---
 # 正誤表
 + [正誤表](https://kzhkkkm.github.io/bayes.html)

@@ -35,7 +35,7 @@ dSigma2 <- 1.0
 dTau2   <- 1.0
 vU      <- rep( 0.0, cN )
 
-# set biru-in & draws
+# set burn-in & draws
 iBurn <- 10000
 iDraw <- 40000
 iIter <- iBurn + iDraw
@@ -80,7 +80,7 @@ for ( iter in 1 : iIter )
 
 	## sampling dTau2
 	dPsi.1 <- sum( vU ^ 2 ) + dPsi.0
-	
+
 	dTau2 <- 1.0 / rgamma( 1, 0.5 * dEta.1, 0.5 * dPsi.1 )
 
 	## sampling vU
@@ -90,7 +90,7 @@ for ( iter in 1 : iIter )
 	{
 		vU[i] <- rtnorm( vMu.1[i], dTau2.1, 0.0, Inf )
 	}
-	
+
 	## save parameters
 	if ( iter > iBurn )
 	{
@@ -124,7 +124,7 @@ sName.U <- NULL
 for( i in 1 : cN )
 {
 	sName.U <- c( sName.U, bquote( u[.( i )] ) )
-}	
+}
 
 ## posterior analysis
 mSummary   <- fSummary( mPostParam, sName, "SF-Param", vLik = mPostL[, 2] )

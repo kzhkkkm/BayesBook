@@ -47,7 +47,7 @@ dNu     <- 5.0
 dSigma2 <- 0.1
 vW      <- rep( 1.0, cN )
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 10000
 iDraw <- 10000
 iIter <- iBurn + iDraw
@@ -107,7 +107,7 @@ dNu     <- 5.0
 ## set initial parameters
 dSigma2 <- 0.1
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 10000
 iDraw <- 10000
 iIter <- iBurn + iDraw
@@ -161,7 +161,7 @@ for ( iter in 1 : iIter )
 	  dCount  <- 0
 	  dAccept <- 0
 	}
-	
+
 	## save parameters
 	if ( iter > iBurn )
 	{
@@ -189,7 +189,7 @@ dLamb.0 <- 0.001
 ## set initial parameters
 dSigma2 <- 0.1
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 10000
 iDraw <- 10000
 iIter <- iBurn + iDraw

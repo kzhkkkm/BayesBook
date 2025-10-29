@@ -60,7 +60,7 @@ cT <- length( vY )
 dAlpha.0 <- 1.0
 dBeta.0  <- 1.0
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 10000
 iDraw <- 10000
 iIter <- iBurn + iDraw

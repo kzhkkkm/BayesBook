@@ -67,7 +67,7 @@ dPhi    <- 0.0
 dSigma2 <- 0.1
 vH      <- rep( 0.0, cT )
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 10000
 iDraw <- 1000000
 iIter <- iBurn + iDraw
@@ -104,7 +104,7 @@ for ( iter in 1 : iIter )
 
 	dMu <- dMu.1 + sqrt( dTau2.1 ) * rnorm( 1 )
 
-	## draw dPhi	
+	## draw dPhi
 	dPhi.n <- dPhi + dC * rnorm( 1 )
 	if ( abs( dPhi.n ) < 1.0 )
 	{
@@ -207,7 +207,7 @@ dLamb.0 <- 0.01
 dMu     <- mean( vY )
 dSigma2 <- var( vY )
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 10000
 iDraw <- 10000
 iIter <- iBurn + iDraw

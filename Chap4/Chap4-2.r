@@ -58,7 +58,7 @@ dLamb.0 <- 0.01
 ## set initial values
 vTheta <- c( 8.4, 0.4 )
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 20000
 iDraw <- 20000
 iIter <- iBurn + iDraw

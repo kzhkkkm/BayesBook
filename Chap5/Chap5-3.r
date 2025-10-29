@@ -49,7 +49,7 @@ vX.1  <- log( vZ.1 ) - log( vZ.2 )
 vX.2  <- log( vZ.2 )
 mZ    <- cbind( vX.1, vX.2 )
 mX    <- cbind( 1, mZ, mW %*% mZ )
- 
+
 ## set dimensions
 cN  <- nrow( mX )
 cK  <- ncol( mX )

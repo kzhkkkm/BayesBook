@@ -54,7 +54,7 @@ dLamb.0 <- 0.01
 dMu     <- mean( vY )
 dSigma2 <- var( vY )
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 10000
 iDraw <- 10000
 iIter <- iBurn + iDraw
@@ -122,7 +122,7 @@ dLamb.0 <- 0.01
 dMu     <- mean( vY )
 dSigma2 <- var( vY )
 
-## set biru-in & draws
+## set burn-in & draws
 iBurn <- 10000
 iDraw <- 10000
 iIter <- iBurn + iDraw
@@ -196,7 +196,7 @@ for ( iter in 1 : iIter )
 	  dCount  <- 0
 	  vAccept <- rep( 0, 2 )
 	}
-	
+
 	## save parameters
 	if ( iter > iBurn )
 	{
