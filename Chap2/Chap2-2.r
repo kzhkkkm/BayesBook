@@ -11,7 +11,7 @@ cT <- length( vY )
 print( paste( "hv = ", sd( vY ), sep = "" ) )
 
 ## Posterior Summary
-dNu.1   <- 0.5 * cT
+dNu.1   <- 0.5 * ( cT - 1 )
 dLamb.1 <- 0.5 * sum( ( vY - mean( vY ) ) ^ 2 )
 dX.l <- sqrt( 1.0 / qgamma( 0.975, dNu.1, dLamb.1 ) )
 dX.u <- sqrt( 1.0 / qgamma( 0.025, dNu.1, dLamb.1 ) )
